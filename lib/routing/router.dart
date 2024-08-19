@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:prayer_time_app/models/mosque.dart';
 import 'package:prayer_time_app/screens/mosques_screen.dart';
 import 'package:prayer_time_app/screens/prayer_times_screen.dart';
 import 'package:prayer_time_app/screens/scaffold_with_nav_bar.dart';
 import 'package:prayer_time_app/screens/settings_screen.dart';
-
-import '../screens/mosque_detail_screen.dart';
+import 'package:prayer_time_app/screens/mosque_detail_screen.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -29,14 +29,19 @@ GoRouter createRouter() {
               GoRoute(
                 path: '/mosques',
                 builder: (BuildContext context, GoRouterState state) =>
-                    const MosquesScreen(),
+                    MosquesScreen(),
                 routes: <RouteBase>[
                   GoRoute(
                     path: 'mosque/:id',
-                    builder: (BuildContext context, GoRouterState state) =>
-                        MosqueDetailScreen(
-                      mosqueId: state.pathParameters['id']!,
-                    ),
+                    builder: (BuildContext context, GoRouterState state) {
+                      final mosque = state.extra as Mosque?;
+                      if (mosque == null) {
+                        return Scaffold(
+                          body: Center(child: Text('No details available')),
+                        );
+                      }
+                      return MosqueDetailScreen(mosque: mosque);
+                    },
                   ),
                 ],
               ),
