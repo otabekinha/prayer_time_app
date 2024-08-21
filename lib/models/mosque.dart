@@ -7,7 +7,8 @@ class Mosque {
     required this.image,
   });
 
+  final Image image;
   final String name;
   final String address;
-  final Image image;
+
 }

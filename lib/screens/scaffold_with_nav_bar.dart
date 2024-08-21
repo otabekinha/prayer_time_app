@@ -16,11 +16,11 @@ class ScaffoldWithNavBar extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.location_on), label: 'Mosques'),
+              icon: Icon(Icons.location_on), label: 'Masjidlar'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.access_time), label: 'Prayer Times'),
+              icon: Icon(Icons.access_time), label: 'Namoz vaqtlari'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.settings), label: 'Settings'),
+              icon: Icon(Icons.settings), label: 'Sozlamalar'),
         ],
         currentIndex: navigationShell.currentIndex,
         onTap: (int index) => navigationShell.goBranch(index),

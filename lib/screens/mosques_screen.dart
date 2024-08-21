@@ -7,24 +7,40 @@ class MosquesScreen extends StatelessWidget {
 
   final List<Mosque> mosques = [
     Mosque(
-        name: 'Mosque 1',
-        address: 'Address 1',
-        image: Image.asset('assets/images/image1.jpg')),
+      name: 'Marhamat jome masjidi',
+      address: 'Andijon viloyati, Marhamat tumani, Marhamat shaharchasi',
+      image: Image.asset(
+        'assets/images/marhamat_jome.jpg',
+        width: double.infinity,
+        fit: BoxFit.cover,
+      ),
+    ),
     Mosque(
-        name: 'Mosque 2',
-        address: 'Address 2',
-        image: Image.asset('assets/images/image2.jpeg')),
+      name: 'Ibrohim Halilulloh jome masjidi',
+      address: 'Andijon viloyati, Marhamat, Al Buxoriy ko\'chasi',
+      image: Image.asset(
+        'assets/images/ibrohim_halilulloh.jpg',
+        width: double.infinity,
+        fit: BoxFit.cover,
+      ),
+    ),
     Mosque(
-        name: 'Mosque 3',
-        address: 'Address 3',
-        image: Image.asset('assets/images/image3.avif')),
+      name: 'O\'qchi jome masjidi',
+      address:
+          'Andijon viloyati, Marhamat tumani, O\'qchi shaharchasi, Toshloq mahallasi',
+      image: Image.asset(
+        'assets/images/oqchi_jome.jpg',
+        width: double.infinity,
+        fit: BoxFit.cover,
+      ),
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mosques'),
+        title: const Text('Masjidlar'),
       ),
       body: ListView.builder(
         itemCount: mosques.length,
@@ -32,6 +48,7 @@ class MosquesScreen extends StatelessWidget {
           final mosque = mosques[index];
           return ListTile(
             title: Text(mosque.name),
+            trailing: const Icon(Icons.arrow_forward),
             onTap: () {
               GoRouter.of(context).go(
                 '/mosques/mosque/${index + 1}',

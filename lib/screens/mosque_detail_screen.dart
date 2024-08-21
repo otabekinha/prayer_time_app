@@ -10,18 +10,56 @@ class MosqueDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mosque Details: ${mosque.name}'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Name: ${mosque.name}', style: TextStyle(fontSize: 18)),
-            Text('Address: ${mosque.address}', style: TextStyle(fontSize: 18)),
-            // Add other details if needed
-          ],
+        title: const Text(
+          'Masjid Tafsilotlari',
         ),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            flex: 1,
+            child: mosque.image,
+          ),
+          Expanded(
+            flex: 2,
+            child: DefaultTabController(
+              initialIndex: 0,
+              length: 3,
+              child: Column(
+                children: [
+                  const TabBar(
+                    tabs: <Widget>[
+                      Tab(
+                        icon: Icon(Icons.home_outlined),
+                      ),
+                      Tab(
+                        icon: Icon(Icons.access_time_outlined),
+                      ),
+                      Tab(
+                        icon: Icon(Icons.info_outline),
+                      ),
+                    ],
+                  ),
+                  Expanded(
+                    child: TabBarView(
+                      children: <Widget>[
+                        Column(
+                          children: [Text(mosque.address)],
+                        ),
+                        Center(
+                          child: Text("It's rainy here"),
+                        ),
+                        Center(
+                          child: Text("It's sunny here"),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
